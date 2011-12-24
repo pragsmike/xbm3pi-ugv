@@ -24,6 +24,8 @@
 #include "mbed.h"
 #include "XBee.h"
 
+XBeeResponse::~XBeeResponse() {}
+
 XBeeResponse::XBeeResponse() {
 
 }
@@ -848,12 +850,13 @@ void XBee::readPacket() {
                     _response.getFrameData()[_pos - 4] = b;
                     _pos++;
                 }
+                break;
         }
     }
 }
 
 // it's peanut butter jelly time!!
-
+XBeeRequest::~XBeeRequest() {}
 XBeeRequest::XBeeRequest(uint8_t apiId, uint8_t frameId) {
     _apiId = apiId;
     _frameId = frameId;

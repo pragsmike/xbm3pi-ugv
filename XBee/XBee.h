@@ -28,7 +28,7 @@
 #include <inttypes.h>
 
 #define SERIES_1
-#define SERIES_2
+#undef SERIES_2
 
 // set to ATAP value of XBee. AP=2 is recommended
 #define ATAP 2
@@ -154,6 +154,7 @@ public:
      * Default constructor
      */
     XBeeResponse();
+    virtual ~XBeeResponse();
     /**
      * Returns Api Id of the response
      */
@@ -616,6 +617,7 @@ public:
      * TODO make protected
      */
     XBeeRequest(uint8_t apiId, uint8_t frameId);
+    virtual ~XBeeRequest();
     /**
      * Sets the frame id.  Must be between 1 and 255 inclusive to get a TX status response.
      */
