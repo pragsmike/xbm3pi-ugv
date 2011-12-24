@@ -1,0 +1,14 @@
+bin
+.settings
+*.class
+target
+bin
+*~
+*.swp
+*.o
+*.a
+*.map
+*.lst
+*.elf
+*.bin
+.svn

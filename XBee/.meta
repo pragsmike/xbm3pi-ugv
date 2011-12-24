@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<root>
+  <global/>
+  <data>
+    <created_ts>1324238753</created_ts>
+    <last_mod_ts>1324243097</last_mod_ts>
+    <is_archive>0</is_archive>
+    <is_published>1</is_published>
+    <is_svn>0</is_svn>
+    <is_module>1</is_module>
+    <is_lib>1</is_lib>
+    <url>http://mbed.org/users/okini3939/libraries/XBee</url>
+    <url_full>http://mbed.org/users/okini3939/libraries/XBee/lv2n2f</url_full>
+    <rev>lv2n2f</rev>
+    <path>/m3pi_JoystickXBee/XBee</path>
+    <duration>627</duration>
+    <compiler_version>1.6.0.10</compiler_version>
+    <csrftoken>2e3a1c41a3cc7c5165c9d9333b5ee9b5</csrftoken>
+  </data>
+</root>
