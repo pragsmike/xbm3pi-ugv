@@ -3,14 +3,14 @@
 #include "XBeeApi.h"
 #include "CommandStreamParser.h"
 #include "CommandDispatcher.h"
-#include "TelemetryEncoder.h"
+#include "TelemetryEncoderMavLink.h"
 
 m3pi                m3pi;
 
 CommandDispatcher   dispatcher(m3pi);
 CommandStreamParser cmdr(dispatcher);
-TelemetryEncoder    telemetry;
-uint8_t currentTelemetryFrame[20];
+TelemetryEncoderMavLink    telemetry;
+uint8_t currentTelemetryFrame[MAVLINK_MAX_PACKET_LEN];
 
 
 XBeeApi          xbee(p28, p27, p26);
