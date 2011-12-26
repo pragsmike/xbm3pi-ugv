@@ -6,6 +6,7 @@
 
 #include "Gyro.h"
 #include "Accelerometer.h"
+#include "Timer.h"
 
 class TelemetryEncoderMavLink {
 
@@ -16,5 +17,6 @@ public:
 private:
     Gyro            gyro;
     Accelerometer   accelerometer;
+    Timer			timeSinceStart;
 };
 #endif

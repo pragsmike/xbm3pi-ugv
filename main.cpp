@@ -19,13 +19,13 @@ int main() {
     dispatcher.init();
     
     while (1) {
-        wait_ms(1);
+        wait_ms(20);
 
+        int len = telemetry.fillFrame(currentTelemetryFrame);
+        xbee.send(currentTelemetryFrame, len);
         while (xbee.readable()) {
             int c = xbee.getc();
             cmdr.acceptChar(c);
         }
-        int len = telemetry.fillFrame(currentTelemetryFrame);
-        xbee.send(currentTelemetryFrame, len);
     }
 }

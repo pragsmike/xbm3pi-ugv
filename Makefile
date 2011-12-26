@@ -5,7 +5,7 @@
 MAVLINK_DIR = /opt/src/mavlink
 GCC_BIN = 
 PROJECT = xbm3pi-ugv
-OBJECTS = CommandDispatcher.o TelemetryEncoder.o TelemetryEncoderMavLink.o CommandStreamParser.o XBeeApi.o Gyro.o main.o Accelerometer.o m3pi/m3pi.o XBee/XBee.o 
+OBJECTS = CommandDispatcher.o TelemetryEncoderMavLink.o CommandStreamParser.o XBeeApi.o Gyro.o main.o Accelerometer.o m3pi/m3pi.o XBee/XBee.o 
 SYS_OBJECTS = ./mbed/LPC1768/GCC_CS/startup_LPC17xx.o ./mbed/LPC1768/GCC_CS/sys.o ./mbed/LPC1768/GCC_CS/cmsis_nvic.o ./mbed/LPC1768/GCC_CS/core_cm3.o ./mbed/LPC1768/GCC_CS/system_LPC17xx.o 
 INCLUDE_PATHS = -I./m3pi -I./XBee -I./mbed -I./mbed/LPC1768 -I./mbed/LPC1768/GCC_CS -I./m3pi -I./XBee \
    -I$(MAVLINK_DIR)/include -I$(MAVLINK_DIR)/include/common

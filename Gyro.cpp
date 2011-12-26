@@ -18,7 +18,7 @@
 #define FIFO_CTRL_REG 0x2E
 
 
-Gyro::Gyro(void) : spi(p5, p6, p7), cs(p14), pc(USBTX, USBRX) {  // mosi, miso, sclk
+Gyro::Gyro(void) : spi(p5, p6, p7), cs(p14) {  // mosi, miso, sclk
 
     // Setup the spi for 8 bit data, high steady state clock,
     // second edge capture, with a 1MHz clock rate

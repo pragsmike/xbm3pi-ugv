@@ -14,7 +14,6 @@ public:
 private:
     SPI         spi;
     DigitalOut  cs;
-    Serial      pc;
     int         readWord();
     int         readByte(uint8_t regaddr);
     void        writeByte(uint8_t regaddr, uint8_t data);
