@@ -2,7 +2,7 @@
 #define TelemetryEncoderMavLink_h
 
 #include "mbed.h"
-#include "common/common.h"
+#include "mavlink.h"
 
 #include "Gyro.h"
 #include "Accelerometer.h"
