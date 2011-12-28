@@ -14,7 +14,6 @@ void CommandDispatcher::init() {
     _m3pi->cls();
     _m3pi->printf("Receiving");
 }
-
 #define RAD2 .707
 
 void CommandDispatcher::drive(float x, float y) {

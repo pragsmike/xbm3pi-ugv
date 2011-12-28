@@ -1,7 +1,6 @@
 #include "Accelerometer.h"
 
 Accelerometer::Accelerometer(void) : ax(p15), ay(p16), az(p17) {
-    ticker.attach(this, &Accelerometer::tick, 0.005);
 }
 
 void Accelerometer::tick(void) {

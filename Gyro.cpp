@@ -32,8 +32,6 @@ Gyro::Gyro(void) : spi(p5, p6, p7), cs(p14) {  // mosi, miso, sclk
     writeByte(FIFO_CTRL_REG, 0x00);
     writeByte(CTRL_REG5,0x00);      // high-pass filtering of outputs
     writeByte(CTRL_REG1,0x0f);      // power up, enable axes
-    
-    ticker.attach(this, &Gyro::tick, 0.005);
 }
 
 void Gyro::tick(void) {

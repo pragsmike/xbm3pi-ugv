@@ -15,6 +15,5 @@ private:
     AnalogIn    ax;
     AnalogIn    ay;
     AnalogIn    az;
-    Ticker      ticker;
 };
 #endif
