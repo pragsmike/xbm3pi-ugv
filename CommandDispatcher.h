@@ -6,11 +6,8 @@
 class CommandDispatcher {
 
 public:
-    CommandDispatcher(m3pi &_m3pi);
-    void drive(float x, float y);
-    void init();
+    CommandDispatcher();
 
 private:
-    m3pi *_m3pi;
 };
 #endif

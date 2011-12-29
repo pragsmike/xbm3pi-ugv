@@ -1,35 +1,55 @@
 #include "m3pi.h"
+#include "Log.h"
+#include "Rover.h"
+#include "IMU.h"
+#include "IMUSensors.h"
+#include "System.h"
 #include "XBeeApi.h"
+#include "USBSerial.h"
 #include "CommandParser.h"
 #include "CommandDispatcher.h"
 #include "TelemetryEncoderMavLink.h"
 
-m3pi                		m3pi;
 
-System						thisSystem;
-CommandDispatcher   		dispatcher(m3pi);
-CommandParser 				cmdr(dispatcher, thisSystem);
-TelemetryEncoderMavLink    	telemetry(thisSystem);
+//#define link xbee
+#define link usb
+
+m3pi                		m3pi;
+Gyro            			gyro;
+Accelerometer   			accelerometer;
 XBeeApi          			xbee(p28, p27, p26);
+Serial						pc(USBTX, USBRX);
+
+Log							_log(pc);
+USBSerial					usb(pc);
+
+TelemetryData				telemetryData;
+
+Rover   					rover(m3pi);
+
+IMUSensors					imuSensors(telemetryData.rawImu, telemetryData.scaledImu, accelerometer, gyro, _log);
+IMU							imu(telemetryData.attitude, telemetryData.scaledImu, .005f, .001);
+System						thisSystem(telemetryData);
+TelemetryEncoderMavLink    	telemetry(telemetryData);
+CommandDispatcher   		dispatcher;
+CommandParser 				cmdr(dispatcher, telemetry, thisSystem, _log, telemetryData);
 
 uint8_t 					currentTelemetryFrame[MAVLINK_MAX_PACKET_LEN];
 
-
 int main() {
-	Serial pc(USBTX, USBRX);
-	pc.printf("main starting\r\n");
-	dispatcher.init();
+	_log.printf("main starting\r\n");
+	rover.init();
     int count = 0;
     while (1) {
-        wait_ms(1);
+        wait_us(100);
 
-        while (xbee.readable()) {
-            uint8_t c = xbee.getc();
+        while (link.readable()) {
+            uint8_t c = link.getc();
             cmdr.acceptChar(c);
         }
-        if ((count++ % 100) == 0) {
+        if ((count++ % 10) == 0) {
 			int len = telemetry.fillFrame(currentTelemetryFrame);
-			xbee.send(currentTelemetryFrame, len);
+			link.send(currentTelemetryFrame, len);
         }
     }
 }

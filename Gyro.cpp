@@ -48,8 +48,9 @@ void Gyro::tick(void) {
     
     // rotate coords, as accel. and gyro oriented differently
     int t = x;
-    x = y;
+    x = -y;
     y = -t;
+    z = -z;
 }
 int Gyro::readWord() {
     int l = spi.write(0x00);

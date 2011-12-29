@@ -36,12 +36,13 @@
  */
 #include "IMUSensors.h"
 
-IMUSensors::IMUSensors(mavlink_raw_imu_t *raw_imu, mavlink_scaled_imu_t *scaled_imu, Accelerometer *accelerometer, Gyro *gyro) {
+IMUSensors::IMUSensors(mavlink_raw_imu_t &raw_imu, mavlink_scaled_imu_t &scaled_imu, Accelerometer &accelerometer, Gyro &gyro, Log &log) {
 
-	_raw_imu 		= raw_imu;
-	_scaled_imu 	= scaled_imu;
-	_accelerometer 	= accelerometer;
-	_gyro 			= gyro;
+	_raw_imu 		= &raw_imu;
+	_scaled_imu 	= &scaled_imu;
+	_accelerometer 	= &accelerometer;
+	_gyro 			= &gyro;
+	_log			= &log;
 
     a_xAccumulator = 0;
     a_yAccumulator = 0;
@@ -52,9 +53,9 @@ IMUSensors::IMUSensors(mavlink_raw_imu_t *raw_imu, mavlink_scaled_imu_t *scaled_
 
     accelerometerSamples = 0;
     gyroscopeSamples = 0;
-    raw_imu->xmag = 0;
-    raw_imu->ymag = 0;
-    raw_imu->zmag = 0;
+    raw_imu.xmag = 0;
+    raw_imu.ymag = 0;
+    raw_imu.zmag = 0;
 
     calibrateAccelerometer();
     initializeGyroscope();
@@ -67,8 +68,8 @@ IMUSensors::IMUSensors(mavlink_raw_imu_t *raw_imu, mavlink_scaled_imu_t *scaled_
     accelerometerTicker.attach(_accelerometer, &Accelerometer::tick, accelerometerRate_);
     gyroTicker.attach(_gyro, &Gyro::tick, gyroscopeRate_);
     imuSensorsTicker.attach(this, &IMUSensors::tick, imuSensorsRate_);
-    Serial pc(USBTX, USBRX);
-    pc.printf("Started sensor tickers\r\n");
+
+    log.printf("Started sensor tickers\r\n");
 
 }
 

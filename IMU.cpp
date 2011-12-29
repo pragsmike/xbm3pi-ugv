@@ -31,24 +31,21 @@
  * http://code.google.com/p/imumargalgorithm30042010sohm/ 
  */
 
-/**
- * Includes
- */
 #include "IMU.h"
 
-IMU::IMU(mavlink_attitude_t *attitude, mavlink_scaled_imu_t *scaled_imu,
+IMU::IMU(mavlink_attitude_t &attitude, mavlink_scaled_imu_t &scaled_imu,
 		 float imuRate,
          double gyroscopeMeasurementError) : imuFilter(imuRate, gyroscopeMeasurementError) {
 
-	_attitude 	= attitude;
-	_scaled_imu = scaled_imu;
+	_attitude 	= &attitude;
+	_scaled_imu = &scaled_imu;
     imuRate_ 	= imuRate;
 
-    filterTicker.attach(this, &IMU::filter, imuRate_);
+    filterTicker.attach(this, &IMU::tick, imuRate_);
 
 }
 
-void IMU::filter(void) {
+void IMU::tick(void) {
 
     //Update the filter variables.
     imuFilter.updateFilter(_scaled_imu->ygyro, _scaled_imu->xgyro, _scaled_imu->zgyro,

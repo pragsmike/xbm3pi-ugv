@@ -1,14 +1,18 @@
 #include "TelemetryEncoderMavLink.h"
 
-TelemetryEncoderMavLink::TelemetryEncoderMavLink(System &system)  {
-	comm_status			= &system.comm_status;
-	my_heartbeat 		= &system.my_heartbeat;
-	mavlink_system		= &system.mavlink_system;
-	sys_status 			= &system.sys_status;
-	local_position_ned 	= &system.local_position_ned;
-	attitude 			= &system.attitude;
-	rawImu 				= &system.rawImu;
-	scaledImu			= &system.scaledImu;
+TelemetryEncoderMavLink::TelemetryEncoderMavLink(TelemetryData &td)  {
+	comm_status			= &td.comm_status;
+	my_heartbeat 		= &td.my_heartbeat;
+	mavlink_system		= &td.mavlink_system;
+	sys_status 			= &td.sys_status;
+	local_position_ned 	= &td.local_position_ned;
+	attitude 			= &td.attitude;
+	rawImu 				= &td.rawImu;
+	scaledImu			= &td.scaledImu;
+
+	_sendParameters = false;
+	_sendCommandAck = false;
+	_sendMissionRequest = false;
 
 	param.param_count = 1;
 	param.param_index = 0;
@@ -18,11 +22,35 @@ TelemetryEncoderMavLink::TelemetryEncoderMavLink(System &system)  {
 	param.param_type = MAVLINK_TYPE_FLOAT;
 	param.param_value = 12.;
 }
+void TelemetryEncoderMavLink::sendParamList(uint8_t sys, uint8_t comp) {
+	_sendParameters = true;
+}
+void TelemetryEncoderMavLink::sendCommandAck(uint16_t command, uint8_t result) {
+	command_ack.command = command;
+	command_ack.result = result;
+	_sendCommandAck = true;
+}
+void TelemetryEncoderMavLink::sendMissionRequest(uint8_t system, uint8_t component, uint8_t index) {
+	mission_request.target_system = system;
+	mission_request.target_component = component;
+	mission_request.seq = index;
+	_sendMissionRequest = true;
+}
 int TelemetryEncoderMavLink::fillFrame( uint8_t *bp) {
 
 	mavlink_message_t msg;
 
-	switch (which++ & 0x7) {
+	if (_sendCommandAck) {
+		mavlink_msg_command_ack_encode(mavlink_system->sysid, mavlink_system->compid, &msg, &command_ack);
+		_sendCommandAck = false;
+	} else if (_sendParameters) {
+		mavlink_msg_param_value_encode(mavlink_system->sysid, mavlink_system->compid, &msg, &param);
+		_sendParameters = false;
+	} else if (_sendMissionRequest) {
+		mavlink_msg_mission_request_encode(mavlink_system->sysid, mavlink_system->compid, &msg, &mission_request);
+		_sendMissionRequest = false;
+
+	} else switch (which++ & 0x7) {
 	case 0:
 		mavlink_msg_heartbeat_encode(mavlink_system->sysid, mavlink_system->compid, &msg, my_heartbeat);
 		break;
@@ -37,9 +65,6 @@ int TelemetryEncoderMavLink::fillFrame( uint8_t *bp) {
 		break;
 	case 4:
 		mavlink_msg_raw_imu_encode(mavlink_system->sysid, mavlink_system->compid, &msg, rawImu);
-		break;
-	case 5:
-		mavlink_msg_param_value_encode(mavlink_system->sysid, mavlink_system->compid, &msg, &param);
 		break;
 
 	default:

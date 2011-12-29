@@ -84,7 +84,7 @@ public:
      * @param accelerometerRate Rate at which accelerometer data is sampled.
      * @param gyroscopeRate Rate at which gyroscope data is sampled.
      */
-    IMU(mavlink_attitude_t *attitude, mavlink_scaled_imu_t *scaled_imu,
+    IMU(mavlink_attitude_t &attitude, mavlink_scaled_imu_t &scaled_imu,
     	float imuRate,
         double gyroscopeMeasurementError);
 
@@ -114,7 +114,7 @@ private:
     /**
      * Update the filter and calculate the Euler angles.
      */
-    void filter(void);
+    void tick(void);
 
     IMUfilter 		imuFilter;
 

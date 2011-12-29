@@ -34,6 +34,7 @@
 #ifndef IMUSensors_H
 #define IMUSensors_H
 
+#include "Log.h"
 #include "Accelerometer.h"
 #include "Gyro.h"
 #include "Timer.h"
@@ -68,7 +69,7 @@ class IMUSensors {
 
 public:
 
-	IMUSensors(mavlink_raw_imu_t *raw_imu,  mavlink_scaled_imu_t *scaled_imu, Accelerometer *accelerometer, Gyro *gyro);
+	IMUSensors(mavlink_raw_imu_t &raw_imu,  mavlink_scaled_imu_t &scaled_imu, Accelerometer &accelerometer, Gyro &gyro, Log &log);
 	void tick(void);
 
 private:
@@ -105,6 +106,7 @@ private:
     mavlink_scaled_imu_t 	*_scaled_imu;
     Accelerometer			*_accelerometer;
     Gyro					*_gyro;
+    Log						*_log;
 
     Ticker					gyroTicker;
     Ticker					accelerometerTicker;
