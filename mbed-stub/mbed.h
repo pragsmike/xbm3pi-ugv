@@ -10,6 +10,8 @@
 #define p15 15
 #define p16 16
 #define p17 17
+#define LED1 1
+#define LED2 2
 
 #define wait(t)
 
@@ -22,7 +24,7 @@ private:
 
 class DigitalOut {
 public:
-	DigitalOut(int i);
+	inline DigitalOut(int i) {};
 private:
 };
 
