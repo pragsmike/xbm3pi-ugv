@@ -38,8 +38,7 @@
 /**
  * Includes
  */
-#include "mbed.h"
-
+#include <math.h>
 /**
  * Defines
  */

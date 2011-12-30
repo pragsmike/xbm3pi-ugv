@@ -37,7 +37,6 @@
 #include "Log.h"
 #include "Accelerometer.h"
 #include "Gyro.h"
-#include "Timer.h"
 #include "mavlink.h"	// for sensor and IMU data structures
 
 
@@ -62,7 +61,9 @@
 //Multiply ADC count readings from ADXL345 to get acceleration in m/s/s.
 #define toAcceleration(x) (x * (4 * g0 * 0.001))
 //14.375 LSB/(degrees/sec)
-#define GYROSCOPE_GAIN (1 / 14.375)
+//#define GYROSCOPE_GAIN (1 / 14.375)
+#define GYROSCOPE_GAIN (1 / (14.375))
+
 #define ACCELEROMETER_GAIN (0.004 * g0)
 
 class IMUSensors {

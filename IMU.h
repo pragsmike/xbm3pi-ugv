@@ -53,9 +53,7 @@
 
 //Gravity at Earth's surface in m/s/s
 #define g0 9.812865328
-//Number of samples to average
-#define SAMPLES 4
-#define CALIBRATION_SAMPLES 128
+
 //Multiply radians to get degrees.
 #define toDegrees(x) (x * 57.2957795)
 //Multiply degrees to get radians.
@@ -63,9 +61,6 @@
 //Full scale resolution on the ADXL345 is 4mg/LSB.
 //Multiply ADC count readings from ADXL345 to get acceleration in m/s/s.
 #define toAcceleration(x) (x * (4 * g0 * 0.001))
-//14.375 LSB/(degrees/sec)
-#define GYROSCOPE_GAIN (1 / 14.375)
-#define ACCELEROMETER_GAIN (0.004 * g0)
 
 /**
  * IMU consisting of ADXL345 accelerometer and ITG-3200 gyroscope to calculate

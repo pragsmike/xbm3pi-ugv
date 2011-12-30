@@ -1,9 +1,8 @@
 #ifndef TelemetryEncoderMavLink_h
 #define TelemetryEncoderMavLink_h
 
-#include "mbed.h"
 #include "mavlink.h"
-#include "System.h"
+#include "TelemetryData.h"
 
 class TelemetryEncoderMavLink {
 

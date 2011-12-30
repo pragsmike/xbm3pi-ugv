@@ -12,13 +12,13 @@ public:
 
     void acceptChar(uint8_t c);
 private:
-    CommandDispatcher  	*_dispatcher;
+    CommandDispatcher  		*_dispatcher;
     TelemetryEncoderMavLink *_telemetry;
-    System				*_system;
-    Log					*_log;
+    System					*_system;
+    Log						*_log;
 
-	mavlink_status_t 	*comm_status;
-	mavlink_heartbeat_t *gcs_heartbeat;
+	mavlink_status_t 		*comm_status;
+	mavlink_heartbeat_t 	*gcs_heartbeat;
 
 	mavlink_message_t 		msg;
 	mavlink_command_long_t 	command_long;

@@ -21,15 +21,16 @@ XBeeApi          			xbee(p28, p27, p26);
 Serial						pc(USBTX, USBRX);
 
 Log							_log(pc);
+StatusDisplay				_status;
 USBSerial					usb(pc);
-
-TelemetryData				telemetryData;
 
 Rover   					rover(m3pi);
 
+TelemetryData				telemetryData;
+
 IMUSensors					imuSensors(telemetryData.rawImu, telemetryData.scaledImu, accelerometer, gyro, _log);
 IMU							imu(telemetryData.attitude, telemetryData.scaledImu, .005f, .001);
-System						thisSystem(telemetryData);
+System						thisSystem(telemetryData, _status);
 TelemetryEncoderMavLink    	telemetry(telemetryData);
 CommandDispatcher   		dispatcher;
 CommandParser 				cmdr(dispatcher, telemetry, thisSystem, _log, telemetryData);

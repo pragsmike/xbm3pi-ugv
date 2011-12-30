@@ -10,7 +10,7 @@ CommandParser::CommandParser(CommandDispatcher &dispatcher, TelemetryEncoderMavL
 }
 
 void CommandParser::acceptChar(uint8_t c) {
-	_log->putc('.');
+	//_log->putc('.');
 	if (mavlink_parse_char(MAVLINK_COMM_0, c, &msg, comm_status)) {
 
 		switch (msg.msgid) {
