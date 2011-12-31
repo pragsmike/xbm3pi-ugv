@@ -118,7 +118,8 @@
 					<sourceEntries>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="m3pi"/>
-						<entry excluding="gcs-stub|link|m3pi|TestMain.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="tests|gcs-stub|link|m3pi|TestMain.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="tests"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -196,8 +197,9 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+						<entry excluding="tests|gcs-stub|link" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
-						<entry excluding="gcs-stub|link" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="tests"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -295,9 +297,10 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="gcs-stub|link|m3pi|mbed/|XBee/|Accelerometer.cpp|Gyro.cpp|IMU.cpp|IMUfilter.cpp|IMUSensors.cpp|main.cpp|Rover.cpp|USBSerial.cpp|XBeeApi.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
+						<entry excluding="tests|gcs-stub|link|m3pi|mbed/|XBee/|Accelerometer.cpp|Gyro.cpp|IMU.cpp|IMUfilter.cpp|IMUSensors.cpp|main.cpp|Rover.cpp|USBSerial.cpp|XBeeApi.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="gcs-stub"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="tests"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

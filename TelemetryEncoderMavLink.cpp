@@ -79,7 +79,7 @@ int TelemetryEncoderMavLink::fillFrame( uint8_t *bp) {
 }
 
 void TelemetryEncoderMavLink::fillMsg(mavlink_message_t &msg, int msgType) {
-	switch (msgType & 0x7) {
+	switch (msgType) {
 		case MAVLINK_MSG_ID_HEARTBEAT:
 			mavlink_msg_heartbeat_encode(mavlink_system->sysid, mavlink_system->compid, &msg, my_heartbeat);
 			break;
