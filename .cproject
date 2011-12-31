@@ -229,19 +229,19 @@
 							<option id="cdt.managedbuild.option.gnu.cross.path.1035218976" name="Path" superClass="cdt.managedbuild.option.gnu.cross.path" value="C:\cygwin\bin" valueType="string"/>
 							<option id="cdt.managedbuild.option.gnu.cross.prefix.1233319014" name="Prefix" superClass="cdt.managedbuild.option.gnu.cross.prefix" value="" valueType="string"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.PE;org.eclipse.cdt.core.GNU_ELF;org.eclipse.cdt.core.Cygwin_PE" id="cdt.managedbuild.targetPlatform.gnu.cross.1366847120" isAbstract="false" osList="all" superClass="cdt.managedbuild.targetPlatform.gnu.cross"/>
-							<builder buildPath="${workspace_loc:/xbm3pi-ugv/Test}" id="cdt.managedbuild.builder.gnu.cross.1711945816" keepEnvironmentInBuildfile="false" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
+							<builder buildPath="${workspace_loc:/xbm3pi-ugv/Test}" id="cdt.managedbuild.builder.gnu.cross.1711945816" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" superClass="cdt.managedbuild.builder.gnu.cross"/>
 							<tool command="gcc" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.cross.c.compiler.267206840" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.option.optimization.level.833637202" name="Optimization Level" superClass="gnu.c.compiler.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.debugging.level.113826557" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.865920032" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/sb/xbm3pi-ugv/mbed-stub"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;\opt\src\unittest-cpp\UnitTest++\src&quot;"/>
+									<listOptionValue builtIn="false" value="C:/opt/src/mavlink/include"/>
+									<listOptionValue builtIn="false" value="C:/opt/src/mavlink/include/common"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1643770468" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols"/>
 								<option id="gnu.c.compiler.option.misc.other.769672056" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -g -Wall -W -Winline -ansi " valueType="string"/>
-								<option id="gnu.c.compiler.option.include.files.394238322" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
+								<option id="gnu.c.compiler.option.include.files.394238322" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="&quot;C:\cygwin\usr\include\stdint.h&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.107108667" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
@@ -251,13 +251,13 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.531540551" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1051763345" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/sb/xbm3pi-ugv/mbed-stub"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;\opt\src\unittest-cpp\UnitTest++\src&quot;"/>
+									<listOptionValue builtIn="false" value="C:/opt/src/mavlink/include"/>
+									<listOptionValue builtIn="false" value="C:/opt/src/mavlink/include/common"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.1866717595" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -g -Wall -W -Winline -ansi " valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.685235883" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def"/>
-								<option id="gnu.cpp.compiler.option.include.files.845807594" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
+								<option id="gnu.cpp.compiler.option.include.files.845807594" name="Include files (-include)" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
 									<listOptionValue builtIn="false" value="&quot;C:\cygwin\usr\include\stdint.h&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1669058191" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>

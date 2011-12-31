@@ -8,6 +8,8 @@ class TelemetryEncoderMavLink {
 public:
     TelemetryEncoderMavLink(TelemetryData &td);
     int fillFrame(uint8_t *bp);
+    void fillMsg(mavlink_message_t &msg, int msgType);
+
     void sendParamList(uint8_t sys, uint8_t comp);
     void sendCommandAck(uint16_t command, uint8_t result);
     void sendMissionRequest(uint8_t system, uint8_t component, uint8_t index);

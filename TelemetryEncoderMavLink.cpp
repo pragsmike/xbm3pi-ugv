@@ -39,6 +39,7 @@ void TelemetryEncoderMavLink::sendMissionRequest(uint8_t system, uint8_t compone
 int TelemetryEncoderMavLink::fillFrame( uint8_t *bp) {
 
 	mavlink_message_t msg;
+	int type = 0;
 
 	if (_sendCommandAck) {
 		mavlink_msg_command_ack_encode(mavlink_system->sysid, mavlink_system->compid, &msg, &command_ack);
@@ -52,26 +53,52 @@ int TelemetryEncoderMavLink::fillFrame( uint8_t *bp) {
 
 	} else switch (which++ & 0x7) {
 	case 0:
-		mavlink_msg_heartbeat_encode(mavlink_system->sysid, mavlink_system->compid, &msg, my_heartbeat);
+		type = MAVLINK_MSG_ID_HEARTBEAT;
 		break;
 	case 1:
-		mavlink_msg_sys_status_encode(mavlink_system->sysid, mavlink_system->compid, &msg, sys_status);
+		type = MAVLINK_MSG_ID_SYS_STATUS;
 		break;
 	case 2:
-		mavlink_msg_local_position_ned_encode(mavlink_system->sysid, mavlink_system->compid, &msg, local_position_ned);
+		type = MAVLINK_MSG_ID_LOCAL_POSITION_NED;
 		break;
 	case 3:
-		mavlink_msg_attitude_encode(mavlink_system->sysid, mavlink_system->compid, &msg, attitude);
+		type = MAVLINK_MSG_ID_ATTITUDE;
 		break;
 	case 4:
-		mavlink_msg_raw_imu_encode(mavlink_system->sysid, mavlink_system->compid, &msg, rawImu);
+		type = MAVLINK_MSG_ID_RAW_IMU;
 		break;
 
 	default:
-		mavlink_msg_scaled_imu_encode(mavlink_system->sysid, mavlink_system->compid, &msg, scaledImu);
+		type = MAVLINK_MSG_ID_SCALED_IMU;
 		break;
 	}
+	fillMsg(msg, type);
 
 	uint16_t len = mavlink_msg_to_send_buffer(bp, &msg);
 	return len;
+}
+
+void TelemetryEncoderMavLink::fillMsg(mavlink_message_t &msg, int msgType) {
+	switch (msgType & 0x7) {
+		case MAVLINK_MSG_ID_HEARTBEAT:
+			mavlink_msg_heartbeat_encode(mavlink_system->sysid, mavlink_system->compid, &msg, my_heartbeat);
+			break;
+		case MAVLINK_MSG_ID_SYS_STATUS:
+			mavlink_msg_sys_status_encode(mavlink_system->sysid, mavlink_system->compid, &msg, sys_status);
+			break;
+		case MAVLINK_MSG_ID_LOCAL_POSITION_NED:
+			mavlink_msg_local_position_ned_encode(mavlink_system->sysid, mavlink_system->compid, &msg, local_position_ned);
+			break;
+		case MAVLINK_MSG_ID_ATTITUDE:
+			mavlink_msg_attitude_encode(mavlink_system->sysid, mavlink_system->compid, &msg, attitude);
+			break;
+		case MAVLINK_MSG_ID_RAW_IMU:
+			mavlink_msg_raw_imu_encode(mavlink_system->sysid, mavlink_system->compid, &msg, rawImu);
+			break;
+		case MAVLINK_MSG_ID_SCALED_IMU:
+			mavlink_msg_scaled_imu_encode(mavlink_system->sysid, mavlink_system->compid, &msg, scaledImu);
+			break;
+		default:
+			break;
+		}
 }
