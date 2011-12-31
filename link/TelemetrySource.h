@@ -10,16 +10,17 @@
 
 #include "mavlink.h"
 #include "../TelemetryEncoderMavLink.h"
+#include "IMsgSource.h"
 
-class TelemetrySource {
+class TelemetrySource : public IMsgSource {
 public:
 	TelemetrySource(TelemetryEncoderMavLink &e);
 	virtual ~TelemetrySource();
 
 	int available(void);
+	mavlink_message_t *nextMessage();
 	int nextMessageBytes(uint8_t *bytes);
 
-	mavlink_message_t *nextMessage();
 	void forceAvailable(uint8_t msgType);
 
 	void setPeriod(uint8_t msgTypeId, int periodTicks);
