@@ -1,5 +1,6 @@
 #ifndef CommandParser_h
 #define CommandParser_h
+#include <stdint.h>
 #include "mavlink.h"
 #include "CommandDispatcher.h"
 #include "TelemetryEncoderMavLink.h"

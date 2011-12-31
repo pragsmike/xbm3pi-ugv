@@ -38,10 +38,10 @@
 								<option id="gnu.c.compiler.option.include.paths.990599876" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/mbed}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/mbed/LPC1768/GCC_CS}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/m3pi}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/XBee}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.2095908831" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="TARGET_LPC1768"/>
@@ -57,10 +57,10 @@
 								<option id="gnu.cpp.compiler.option.include.paths.22930997" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/mbed}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/mbed/LPC1768/GCC_CS}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/m3pi}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/xbm3pi-ugv/XBee}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.135473788" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-std=gnu++98 -c -Os -fno-common -fmessage-length=0 -Wall -fno-exceptions -mcpu=cortex-m3 -mthumb -ffunction-sections -fdata-sections " valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.1782130028" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
@@ -116,8 +116,9 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="m3pi|TestMain.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="m3pi"/>
+						<entry excluding="gcs-stub|link|m3pi|TestMain.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -194,6 +195,10 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<sourceEntries>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
+						<entry excluding="gcs-stub|link" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+					</sourceEntries>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
@@ -230,12 +235,15 @@
 								<option id="gnu.c.compiler.option.debugging.level.113826557" name="Debug Level" superClass="gnu.c.compiler.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.865920032" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/sb/xbm3pi-ugv/mbed-stub"/>
-									<listOptionValue builtIn="false" value="&quot;\opt\src\mavlink\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;\opt\src\mavlink\include\common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;\opt\src\unittest-cpp\UnitTest++\src&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1643770468" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols"/>
 								<option id="gnu.c.compiler.option.misc.other.769672056" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -g -Wall -W -Winline -ansi " valueType="string"/>
+								<option id="gnu.c.compiler.option.include.files.394238322" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
+									<listOptionValue builtIn="false" value="&quot;C:\cygwin\usr\include\stdint.h&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.107108667" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool command="g++" commandLinePattern="${COMMAND} ${FLAGS} ${OUTPUT_FLAG} ${OUTPUT_PREFIX}${OUTPUT} ${INPUTS}" errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1071351245" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
@@ -243,12 +251,15 @@
 								<option id="gnu.cpp.compiler.option.debugging.level.531540551" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.1051763345" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="/sb/xbm3pi-ugv/mbed-stub"/>
-									<listOptionValue builtIn="false" value="&quot;\opt\src\mavlink\include&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;\opt\src\mavlink\include\common&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\opt\src\mavlink\include\common&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;\opt\src\unittest-cpp\UnitTest++\src&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.other.other.1866717595" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -g -Wall -W -Winline -ansi " valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.685235883" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def"/>
+								<option id="gnu.cpp.compiler.option.include.files.845807594" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
+									<listOptionValue builtIn="false" value="&quot;C:\cygwin\usr\include\stdint.h&quot;"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1669058191" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.cross.c.linker.905198245" name="Cross GCC Linker" superClass="cdt.managedbuild.tool.gnu.cross.c.linker"/>
@@ -284,11 +295,15 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="m3pi|mbed/|XBee/|Accelerometer.cpp|Gyro.cpp|IMU.cpp|IMUfilter.cpp|IMUSensors.cpp|main.cpp|Rover.cpp|USBSerial.cpp|XBeeApi.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="gcs-stub|link|m3pi|mbed/|XBee/|Accelerometer.cpp|Gyro.cpp|IMU.cpp|IMUfilter.cpp|IMUSensors.cpp|main.cpp|Rover.cpp|USBSerial.cpp|XBeeApi.cpp" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="link"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="gcs-stub"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
-			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
+				<externalSettings containerId="UnitTest++;" factoryId="org.eclipse.cdt.core.cfg.export.settings.sipplier"/>
+			</storageModule>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -299,6 +314,18 @@
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1539158099;cdt.managedbuild.tool.gnu.cpp.compiler.input.754154445">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962.247837584;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.assembler.base.873929368;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.assembler.base.input.663223876">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1071351245;cdt.managedbuild.tool.gnu.cpp.compiler.input.1669058191">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434.1167710218;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1071351245.426028796;cdt.managedbuild.tool.gnu.cpp.compiler.input.490874743">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434.;cdt.managedbuild.tool.gnu.cross.c.compiler.267206840;cdt.managedbuild.tool.gnu.c.compiler.input.107108667">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
@@ -311,20 +338,17 @@
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.release.2063544326;cdt.managedbuild.config.gnu.cross.lib.release.2063544326.;cdt.managedbuild.tool.gnu.cross.c.compiler.2056155310;cdt.managedbuild.tool.gnu.c.compiler.input.2009501399">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434.1906736541;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1077678169;cdt.managedbuild.tool.gnu.cpp.compiler.input.1130457276">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962.247837584;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.cpp.compiler.base.308601743;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.cpp.compiler.base.input.1296847544">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCManagedMakePerProjectProfileCPP"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1539158099;cdt.managedbuild.tool.gnu.cpp.compiler.input.754154445">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962.247837584;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.c.compiler.base.1359218256;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.c.compiler.base.input.1747170266">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.toolchain.base.303891962.247837584;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.assembler.base.873929368;org.eclipse.cdt.cross.arm.gnu.sourcery.linux.assembler.base.input.663223876">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434.;cdt.managedbuild.tool.gnu.cross.cpp.compiler.1071351245;cdt.managedbuild.tool.gnu.cpp.compiler.input.1669058191">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434;cdt.managedbuild.config.gnu.cross.lib.debug.1575231530.1984234434.1906736541;cdt.managedbuild.tool.gnu.cross.c.compiler.1658813195;cdt.managedbuild.tool.gnu.c.compiler.input.1109223737">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 	</storageModule>
 </cproject>
