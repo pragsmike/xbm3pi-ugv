@@ -12,7 +12,7 @@ class CommandParser {
 public:
 	CommandParser(MissionSyncer &mission, ParamSyncer &param, SystemState &systemState, System &system, Log &log, TelemetryData &td);
 
-    void acceptChar(uint8_t c);
+    bool acceptChar(uint8_t c);
 private:
     MissionSyncer 			*_mission;
     ParamSyncer 			*_param;

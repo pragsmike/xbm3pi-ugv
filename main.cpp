@@ -15,8 +15,8 @@
 #include "TelemetryEncoderMavLink.h"
 
 
-//#define link xbee
-#define link usb
+#define link xbee
+//#define link usb
 
 m3pi                		m3pi;
 Gyro            			gyro;
@@ -26,7 +26,7 @@ Serial						pc(USBTX, USBRX);
 
 Log							_log(pc);
 StatusDisplay				_status;
-USBSerial					usb(pc);
+//USBSerial					usb(pc);
 
 Rover   					rover(m3pi);
 
@@ -56,10 +56,9 @@ int main() {
     downLink.addSource(telemetrySource);
 
     while (1) {
-        wait_us(1);
-
+        wait_us(1000);
         while (link.readable()) {
-            uint8_t c = link.getc();
+        	uint8_t c = link.getc();
             cmdr.acceptChar(c);
         }
         telemetrySource.setTick(count++);

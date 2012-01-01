@@ -10,8 +10,8 @@ CommandParser::CommandParser(MissionSyncer &mission, ParamSyncer &param, SystemS
 	gcs_heartbeat = &td.gcs_heartbeat;
 }
 
-void CommandParser::acceptChar(uint8_t c) {
-	//_log->putc('.');
+bool CommandParser::acceptChar(uint8_t c) {
+//	_log->putc('.');
 	if (mavlink_parse_char(MAVLINK_COMM_0, c, &msg, comm_status)) {
 
 		switch (msg.msgid) {
@@ -55,8 +55,8 @@ void CommandParser::acceptChar(uint8_t c) {
 				_system->land();
 				break;
 			}
-			_systemState->sendCommandAck(command_long.command, MAV_RESULT_ACCEPTED);
 			_log->printf("Inbound command_long, command %d target comp %d\r\n",	command_long.command, command_long.target_component);
+			_systemState->sendCommandAck(command_long.command, MAV_CMD_ACK_OK);
 		}
 		break;
 		case MAVLINK_MSG_ID_MISSION_COUNT: {
@@ -69,5 +69,7 @@ void CommandParser::acceptChar(uint8_t c) {
 			_log->printf("Inbound msg type %d component %d\r\n", msg.msgid, msg.compid);
 			break;
 		}
+		return true;
 	}
+	return false;
 }
