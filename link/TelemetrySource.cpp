@@ -9,6 +9,14 @@ TelemetrySource::TelemetrySource(TelemetryEncoderMavLink &e) {
 	msgTypesKnown[msgTypesKnownCount++] = MAVLINK_MSG_ID_SCALED_IMU;
 	msgTypesKnown[msgTypesKnownCount++] = MAVLINK_MSG_ID_ATTITUDE;
 	msgTypesKnown[msgTypesKnownCount++] = MAVLINK_MSG_ID_LOCAL_POSITION_NED;
+
+	setPeriod(MAVLINK_MSG_ID_HEARTBEAT, 			700);
+	setPeriod(MAVLINK_MSG_ID_RAW_IMU,   			21);
+	setPeriod(MAVLINK_MSG_ID_SCALED_IMU,   			20);
+	setPeriod(MAVLINK_MSG_ID_ATTITUDE,   			60);
+	setPeriod(MAVLINK_MSG_ID_LOCAL_POSITION_NED, 	44);
+	setPeriod(MAVLINK_MSG_ID_SYS_STATUS,   			50);
+
 }
 
 TelemetrySource::~TelemetrySource() {}

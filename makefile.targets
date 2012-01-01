@@ -1,5 +1,5 @@
 
-all:   fixds Test
-fixds:
-	if [ -f Log.d ] ; then perl -pi.BAK -e 's/[cC]:[\\\/]/\//' *.d */*.d ; fi
+#all:   fixds Test
+#fixds:
+#	if [ -f Log.d ] ; then perl -pi.BAK -e 's/[cC]:[\\\/]/\//' *.d */*.d ; fi
 

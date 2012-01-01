@@ -36,3 +36,7 @@ mavlink_message_t * ParamSyncer::nextMessage(void) {
 void ParamSyncer::sendParamList() {
 	pending = 1;
 }
+void ParamSyncer::setParamValue(char *id, int idLength, float param_value) {
+	param.param_value = param_value;
+	pending = 1;
+}

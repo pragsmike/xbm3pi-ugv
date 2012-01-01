@@ -21,6 +21,7 @@ public:
 	mavlink_message_t *nextMessage();
 
     void sendParamList();
+    void setParamValue(char *id, int idLength, float param_value);
 private:
     int 					pending;
     TelemetryData 			*telemetryData;

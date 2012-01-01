@@ -25,7 +25,7 @@ void CommandParser::acceptChar(uint8_t c) {
 			int target = mavlink_msg_set_mode_get_target_system(&msg);
 			int base_mode = mavlink_msg_set_mode_get_base_mode(&msg);
 			int custom_mode = mavlink_msg_set_mode_get_custom_mode(&msg);
-			_log->printf("Inbound set_mode %d target %d\r\n",		base_mode, target);
+			_log->printf("Inbound set_mode base %d custom %d\r\n",		base_mode, custom_mode);
 			_system->setMode(target, base_mode, custom_mode);
 		}
 			break;
@@ -36,6 +36,15 @@ void CommandParser::acceptChar(uint8_t c) {
 				_param->sendParamList();
 		}
 			break;
+		case MAVLINK_MSG_ID_PARAM_SET: {
+			uint8_t comp = mavlink_msg_param_set_get_target_component(&msg);
+			char id[16];
+			uint16_t param_id = mavlink_msg_param_set_get_param_id(&msg, id);
+			float param_value = mavlink_msg_param_set_get_param_value(&msg);
+			_log->printf("Inbound set param comp %d %d %d\r\n",		comp, param_id, param_value);
+			_param->setParamValue(id, 16, param_value);
+		}
+		break;
 		case MAVLINK_MSG_ID_COMMAND_LONG: {
 			mavlink_msg_command_long_decode(&msg, &command_long);
 			switch (command_long.command) {
@@ -47,7 +56,7 @@ void CommandParser::acceptChar(uint8_t c) {
 				break;
 			}
 			_systemState->sendCommandAck(command_long.command, MAV_RESULT_ACCEPTED);
-			_log->printf("Inbound command_long, command %d target %d\r\n",		command_long.command, command_long.target_component);
+			_log->printf("Inbound command_long, command %d target comp %d\r\n",	command_long.command, command_long.target_component);
 		}
 		break;
 		case MAVLINK_MSG_ID_MISSION_COUNT: {
@@ -57,7 +66,7 @@ void CommandParser::acceptChar(uint8_t c) {
 		}
 		break;
 		default:
-			_log->printf("Inbound msg type %d\r\n", msg.msgid);
+			_log->printf("Inbound msg type %d component %d\r\n", msg.msgid, msg.compid);
 			break;
 		}
 	}

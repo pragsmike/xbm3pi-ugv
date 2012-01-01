@@ -23,7 +23,7 @@ public:
 	void clearSources();
     int nextMessageBytes(uint8_t *bp);
 private:
-	IMsgSource	*sources[3];
+	IMsgSource	*sources[10];
 	unsigned int sourceCount;
 };
 

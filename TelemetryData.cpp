@@ -4,7 +4,7 @@ TelemetryData::TelemetryData() {
 
 	mavlink_system.sysid 	= 20;                   		/// ID 20 for this rover
 	mavlink_system.compid 	= MAV_COMP_ID_IMU;     			/// The component sending the message is the IMU, it could be also a Linux process
-	mavlink_system.type 	= MAV_TYPE_GROUND_ROVER;    	// MAV_TYPE_HELICOPTER
+	mavlink_system.type 	= MAV_TYPE_HELICOPTER;// MAV_TYPE_GROUND_ROVER;    	// MAV_TYPE_HELICOPTER
 	mavlink_system.state	= MAV_STATE_ACTIVE;
 	mavlink_system.mode		= MAV_MODE_PREFLIGHT;			// MAV_MODE_GUIDED_ARMED
 	mavlink_system.nav_mode = 0;
