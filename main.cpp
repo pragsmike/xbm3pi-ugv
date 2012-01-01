@@ -7,7 +7,11 @@
 #include "XBeeApi.h"
 #include "USBSerial.h"
 #include "CommandParser.h"
-#include "CommandDispatcher.h"
+#include "link/MissionSyncer.h"
+#include "link/ParamSyncer.h"
+#include "link/SystemState.h"
+#include "link/DownLink.h"
+#include "link/TelemetrySource.h"
 #include "TelemetryEncoderMavLink.h"
 
 
@@ -30,10 +34,15 @@ TelemetryData				telemetryData;
 
 IMUSensors					imuSensors(telemetryData.rawImu, telemetryData.scaledImu, accelerometer, gyro, _log);
 IMU							imu(telemetryData.attitude, telemetryData.scaledImu, .005f, .001);
+
 System						thisSystem(telemetryData, _status);
 TelemetryEncoderMavLink    	telemetry(telemetryData);
-CommandDispatcher   		dispatcher;
-CommandParser 				cmdr(dispatcher, telemetry, thisSystem, _log, telemetryData);
+DownLink					downLink;
+TelemetrySource				telemetrySource(telemetry);
+ParamSyncer					param(telemetryData);
+SystemState					systemState(telemetryData);
+MissionSyncer		   		mission(telemetryData);
+CommandParser 				cmdr(mission, param, systemState, thisSystem, _log, telemetryData);
 
 uint8_t 					currentTelemetryFrame[MAVLINK_MAX_PACKET_LEN];
 
@@ -41,6 +50,11 @@ int main() {
 	_log.printf("main starting\r\n");
 	rover.init();
     int count = 0;
+    downLink.addSource(systemState);
+    downLink.addSource(mission);
+    downLink.addSource(param);
+    downLink.addSource(telemetrySource);
+
     while (1) {
         wait_us(100);
 
@@ -49,7 +63,8 @@ int main() {
             cmdr.acceptChar(c);
         }
         if ((count++ % 10) == 0) {
-			int len = telemetry.fillFrame(currentTelemetryFrame);
+        	// TODO tick the TelemetrySource
+			int len = downLink.nextMessageBytes(currentTelemetryFrame);
 			link.send(currentTelemetryFrame, len);
         }
     }

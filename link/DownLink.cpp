@@ -37,3 +37,10 @@ void DownLink::addSource(IMsgSource &src) {
 void DownLink::clearSources() {
 	sourceCount = 0;
 }
+
+int DownLink::nextMessageBytes(uint8_t *bp) {
+	if (!available())
+		return 0;
+	uint16_t len = mavlink_msg_to_send_buffer(bp, nextMessage());
+	return len;
+}

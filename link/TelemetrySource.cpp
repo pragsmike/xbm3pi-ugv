@@ -29,12 +29,6 @@ void TelemetrySource::forceAvailable(uint8_t c) {
 	msgTypesAvailable[msgTypesAvailableCount++] = c;
 }
 
-int TelemetrySource::nextMessageBytes(uint8_t *bp) {
-	if (!available())
-		return 0;
-	uint16_t len = mavlink_msg_to_send_buffer(bp, nextMessage());
-	return len;
-}
 
 void TelemetrySource::setPeriod(uint8_t msgTypeId, int periodTicks) {
 	msgTypePeriods[msgTypeId] = periodTicks;

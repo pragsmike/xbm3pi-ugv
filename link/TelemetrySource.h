@@ -19,7 +19,6 @@ public:
 
 	int available(void);
 	mavlink_message_t *nextMessage();
-	int nextMessageBytes(uint8_t *bytes);
 
 	void forceAvailable(uint8_t msgType);
 

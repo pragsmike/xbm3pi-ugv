@@ -21,6 +21,7 @@ public:
 
 	void addSource(IMsgSource &src);
 	void clearSources();
+    int nextMessageBytes(uint8_t *bp);
 private:
 	IMsgSource	*sources[3];
 	unsigned int sourceCount;

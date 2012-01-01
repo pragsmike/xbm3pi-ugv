@@ -10,6 +10,15 @@
 ParamSyncer::ParamSyncer(TelemetryData &data) {
 	telemetryData = &data;
 	pending = 0;
+
+	param.param_count = 1;
+	param.param_index = 0;
+	param.param_id[0] = 'A';
+	param.param_id[1] = 'Y';
+	param.param_id[3] = 0;
+	param.param_type = MAVLINK_TYPE_FLOAT;
+	param.param_value = 12.;
+
 }
 
 ParamSyncer::~ParamSyncer() {}
